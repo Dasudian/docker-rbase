@@ -27,7 +27,7 @@ RUN set -ex \
       libjpeg62 \
       libopenblas-dev \
       libpangocairo-1.0-0 \
-      libpng16-16 \
+      libpng12-0 \
       libtiff5 \
       locales \
       make \
@@ -45,7 +45,6 @@ RUN set -ex \
       libicu-dev \
       libpcre3-dev \
       libpng-dev \
-      libpng16-dev \
       libreadline-dev \
       libtiff5-dev \
       liblzma-dev \
