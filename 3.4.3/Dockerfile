@@ -103,7 +103,7 @@ RUN set -ex \
     && chmod g+wx /usr/local/lib/R/site-library \
     ## Fix library path
     && echo "R_LIBS_USER='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
-    && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
+    && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library:~/R/library'}" >> /usr/local/lib/R/etc/Renviron \
     ## install packages from date-locked MRAN snapshot of CRAN
     && [ -z "$BUILD_DATE" ] && BUILD_DATE=$(TZ="America/Los_Angeles" date -I) || true \
     && MRAN=https://mran.microsoft.com/snapshot/${BUILD_DATE} \
@@ -119,6 +119,7 @@ RUN set -ex \
     && curl -fsSL https://github.com/eddelbuettel/littler/raw/master/inst/examples/install2.r -o /usr/local/bin/install2.r \
     && chmod +x /usr/local/bin/install2.r \
     ## Clean up from R source install
+    && rm -rf /tmp/* \
     && cd / \
     && apt-get remove --purge -y $BUILD_DEPS \
     && apt-get autoremove -y \
