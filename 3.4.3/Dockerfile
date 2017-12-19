@@ -120,7 +120,7 @@ RUN set -ex \
     && chmod +x /usr/local/bin/install2.r \
     ## Clean up from R source install
     && cd / \
-    && apt-get remove --purge -y $BUILDDEPS \
+    && apt-get remove --purge -y $BUILD_DEPS \
     && apt-get autoremove -y \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/*
